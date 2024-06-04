@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 
-
 namespace RestaurantRaterApi2.Data;
 
 public class RestaurantDbContext : DbContext
