@@ -15,8 +15,9 @@ public class RestaurantController : ControllerBase
         _context = context;
     }
 
-    //Get endpoints here...
-    public async Task<IActionResult> GetRestaurants()
+    //Async Get endpoints here...
+    [HttpGet]
+    public async Task<IActionResult> GetRestaurantsAsync()
     {
         List<Restaurant> restaurants = await _context.Restaurants.ToListAsync();
         return Ok(restaurants);
@@ -24,7 +25,7 @@ public class RestaurantController : ControllerBase
 
     [HttpGet("{id:int}")]
 
-    public async Task<IActionResult> GetRestaurantById (int id)
+    public async Task<IActionResult> GetRestaurantByIdAsync (int id)
     {
         Restaurant? restaurant = await _context.Restaurants.FindAsync(id);
         
@@ -34,10 +35,10 @@ public class RestaurantController : ControllerBase
         }
         return Ok(restaurant);
     }
-    // Post endpoints here...
+    // Async Post endpoint here...
 
     [HttpPost]
-    public async Task<IActionResult> PostRestaurant([FromForm] Restaurant request) 
+    public async Task<IActionResult> PostRestaurantAsync([FromBody] Restaurant request) 
     {
 
         if (ModelState.IsValid)
